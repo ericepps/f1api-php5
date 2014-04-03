@@ -1,0 +1,7 @@
+.DS_Store
+project.txt
+methods.txt
+
+# composer
+/vendor/
+composer.lock

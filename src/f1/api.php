@@ -5,42 +5,11 @@
  * F1 API
  * @author Daniel Boorn - daniel.boorn@gmail.com
  * @copyright Daniel Boorn
- * @license Creative Commons Attribution-NonCommercial 3.0 Unported (CC BY-NC 3.0)
  * @namespace F1
  */
 
-/**
- * 6/13/2013 - Daniel Boorn
- * The class uses a JSON api_path.js file that defines the API endpoints and paths. 
- * The package include a DocGen utillity for generating and saving the JSON api_path.js file.
- * However, you do NOT need to edit or geneate this file as it already includes all methods.
- * This class is chainable! Please see examples before use.
- * 
-*/
-
 
 namespace F1;
-
-class Exception extends \Exception{
-	
-	public $response;
-	public $extra;
-		
-	public function __construct($message, $code = 0, $response=null, $extra=null, \OAuthException $previous = null) {
-		parent::__construct($message, $code, $previous);
-		$this->response = $response;
-		$this->extra = $extra;
-	}
-	
-	public function getResponse(){
-		return $this->response;
-	}
-	
-	public function getExtra(){
-		return $this->extra;
-	}
-	
-}
 
 class API{
 	
@@ -580,6 +549,25 @@ class API{
 
 	}	
 	
+}
+
+class Exception extends \Exception{
 	
+	public $response;
+	public $extra;
+		
+	public function __construct($message, $code = 0, $response=null, $extra=null, \OAuthException $previous = null) {
+		parent::__construct($message, $code, $previous);
+		$this->response = $response;
+		$this->extra = $extra;
+	}
+	
+	public function getResponse(){
+		return $this->response;
+	}
+	
+	public function getExtra(){
+		return $this->extra;
+	}
 	
 }
