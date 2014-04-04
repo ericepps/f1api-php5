@@ -5,3 +5,5 @@ methods.txt
 # composer
 /vendor/
 composer.lock
+f1/tokens
+examples

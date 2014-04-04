@@ -1,5 +1,5 @@
 {
-    "name": "fellowshipone/f1api-php5",
+    "name": "fellowshipone/f1api-php",
     "type": "library",
     "description": "Client library for FellowshipOne API",
     "keywords": ["fellowshipone", "api", "oauth"],

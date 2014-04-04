@@ -24,7 +24,7 @@ class API{
 	public $paths;
 	
 	public $tokenPaths = array(
-		'tokenCache'=> 'tokens/',
+		'tokenCache'=> '../src/f1/tokens/',
 		'general' => array(
 			'requestToken'=>'/v1/Tokens/RequestToken',
 			'accessToken'=>'/v1/Tokens/AccessToken',
@@ -45,7 +45,7 @@ class API{
 		'secret'=>'',
 		'username'=>'',
 		'password'=>'',
-		'baseUrl'=>'',
+		'baseUrl'=>'https://churchcode.staging.fellowshiponeapi.com',
 	);
 	
 	protected $endpointId;
@@ -69,7 +69,7 @@ class API{
 	 * @param array $settings=null
 	 * @returns void
 	 */
-	public function forge($settings=null){
+	public static function forge($settings=null){
 		$self = new self($settings);
 		if($self->settings->username && $self->settings->password){
 			$self->login2ndParty($self->settings->username, $self->settings->password);
@@ -113,21 +113,6 @@ class API{
 		$this->pathIds = array();
 	}
 	
-	/**
-	 * set content type to xml
-	 */
-	public function xml(){
-		$this->contentType = 'xml';
-		return $this;
-	}
-	
-	/**
-	 * set content type to json
-	 */
-	public function json(){
-		$this->contentType = 'json';
-		return $this;
-	}
 	
 	/**
 	 * returns parsed path with ids (if any)
@@ -164,16 +149,7 @@ class API{
 		return $this;
 	}
 
-	/**
-	 * return phpQuery document from xml
-	 * @param string $xml
-	 * @requires phpQuery
-	 * @returns phpQuery
-	 */
-	public function getDoc($xml){
-		return \phpQuery::newDocumentXML($xml);
-	}
-	
+		
 	/**
 	 * return api response
 	 * @returns object|boolean
@@ -398,7 +374,7 @@ class API{
 	 * @param const $cacheType
 	 * @return boolean
 	 */
-	public function login2ndParty($username,$password,$cacheType=self::TOKEN_CACHE_SESSION,$custoHandlers=NULL){
+	public function login2ndParty($username,$password,$cacheType=self::TOKEN_CACHE_FILE,$custoHandlers=NULL){
 		$token = $this->getAccessToken($username,$cacheType,$custoHandlers);
 		if(!$token){
 			$token = $this->obtainCredentialsBasedAccessToken($username,$password);
