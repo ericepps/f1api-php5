@@ -123,43 +123,43 @@
         "verb": "GET",
         "path": "/v1/Communications/CommunicationTypes/{id}"
     },
-    "people_denominations_list": {
+    "denominations_list": {
         "verb": "GET",
         "path": "/v1/People/Denominations"
     },
-    "people_denominations_show": {
+    "denominations_show": {
         "verb": "GET",
         "path": "/v1/People/Denominations/{id}"
     },
-    "people_occupations_list": {
+    "occupations_list": {
         "verb": "GET",
         "path": "/v1/People/Occupations"
     },
-    "people_occupations_show": {
+    "occupations_show": {
         "verb": "GET",
         "path": "/v1/People/Occupations/{id}"
     },
-    "people_schools_list": {
+    "schools_list": {
         "verb": "GET",
         "path": "/v1/People/Schools"
     },
-    "people_schools_show": {
+    "schools_show": {
         "verb": "GET",
         "path": "/v1/People/Schools/{id}"
     },
-    "people_statuses_list": {
+    "statuses_list": {
         "verb": "GET",
         "path": "/v1/People/Statuses"
     },
-    "people_statuses_show": {
+    "statuses_show": {
         "verb": "GET",
         "path": "/v1/People/Statuses/{id}"
     },
-    "people_statuses_substatuses_list": {
+    "statuses_substatuses_list": {
         "verb": "GET",
         "path": "/v1/People/Statuses/{statusID}/SubStatuses"
     },
-    "people_statuses_substatuses_show": {
+    "statuses_substatuses_show": {
         "verb": "GET",
         "path": "/v1/People/Statuses/{statusID}/SubStatuses/{id}"
     },

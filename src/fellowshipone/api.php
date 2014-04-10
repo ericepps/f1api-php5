@@ -38,47 +38,26 @@ class API{
 		),
 	);
 	
-	public $contentType = 'json';
-		
-	protected $settings = array(
-		'key'=>'',
-		'secret'=>'',
-		'username'=>'',
-		'password'=>'',
-		'baseUrl'=>'https://churchcode.staging.fellowshiponeapi.com',
-	);
-	
+	public $contentType = 'json';		
+	protected $settings = array();	
 	protected $endpointId;
 	protected $pathIds = array();
-	protected $response;
+	public $response;
 	
 	
 	/**
 	 * construct
-	 * @param array $settings=null
+	 * @param array $settings
 	 * @returns void
-	 * @throws \Exception
 	 */
-	public function __construct($settings=null){
-		$this->settings = $settings ? (object) $settings : (object) $this->settings;
+	public function __construct($settings){
+		$this->settings = (object) $settings;
 		$this->loadApiPaths();
 	}
 	
-	/**
-	 * forge factory
-	 * @param array $settings=null
-	 * @returns void
-	 */
-	public static function forge($settings=null){
-		$self = new self($settings);
-		if($self->settings->username && $self->settings->password){
-			$self->login2ndParty($self->settings->username, $self->settings->password);
-		}
-		return $self;
-	}	
 	
 	/**
-	 * deboug output
+	 * debug output
 	 * @returns void
 	 */
 	public function d($obj){
@@ -103,7 +82,7 @@ class API{
 		}
 		return $this;		
 	}
-	
+
 	/**
 	 * clear properties used by chain requests
 	 * @returns void
@@ -112,8 +91,7 @@ class API{
 		$this->endpointId = null;
 		$this->pathIds = array();
 	}
-	
-	
+			
 	/**
 	 * returns parsed path with ids (if any)
 	 * @param string $path
@@ -155,8 +133,7 @@ class API{
 	 * @returns object|boolean
 	 */
 	public function get(){
-		if($this->contentType=='json') return $this->response;
-		return $this->getDoc($this->response);
+		return $this->response;
 	}
 	
 
@@ -374,7 +351,7 @@ class API{
 	 * @param const $cacheType
 	 * @return boolean
 	 */
-	public function login2ndParty($username,$password,$cacheType=self::TOKEN_CACHE_FILE,$custoHandlers=NULL){
+	public function login2ndParty($username,$password,$cacheType=self::TOKEN_CACHE_SESSION,$custoHandlers=NULL){
 		$token = $this->getAccessToken($username,$cacheType,$custoHandlers);
 		if(!$token){
 			$token = $this->obtainCredentialsBasedAccessToken($username,$password);
@@ -502,7 +479,7 @@ class API{
 	public function login3rdParty($callbackUrl,$cacheType=self::TOKEN_CACHE_SESSION,$custoHandlers=NULL){
 		
 		if($cacheType==self::TOKEN_CACHE_FILE){
-			throw Exception("Cache Type: " . self::TOKEN_CACHE_FILE . " is not supported on 3rd party. Use Session or Custom");
+			throw new Exception("Cache Type: " . self::TOKEN_CACHE_FILE . " is not supported on 3rd party. Use Session or Custom");
 		}
 
 		//fetch cached token (if any)
