@@ -6,6 +6,6 @@
     "homepage": "https://github.com/fellowshiptech/f1api-php5",
     "require": {
         "php": ">=5.3.3",
-        "ext-oauth": "*",
+        "ext-oauth": "*"
     }
 }
