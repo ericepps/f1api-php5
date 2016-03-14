@@ -642,5 +642,17 @@
     "people_attributes_delete": {
         "verb": "DELETE",
         "path": "/v1/People/{peopleID}/Attributes/{id}"
+    },
+    "grouptypes_list": {
+        "verb": "GET",
+        "path": "/groups/v1/grouptypes"
+    },
+    "campuses_list": {
+        "verb": "GET",
+        "path": "/groups/v1/campuses"
+    },
+    "genders_list": {
+        "verb": "GET",
+        "path": "/groups/v1/genders"
     }
 }
