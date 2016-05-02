@@ -353,7 +353,7 @@ class API{
 	 */
 	public function login2ndParty($username,$password,$cacheType=self::TOKEN_CACHE_SESSION,$custoHandlers=NULL){
 		$token = $this->getAccessToken($username,$cacheType,$custoHandlers);
-		if(!$token){
+		if($token !== false){
 			$token = $this->obtainCredentialsBasedAccessToken($username,$password);
 			$this->saveAccessToken($username,$token,$cacheType,$custoHandlers);
 		}
